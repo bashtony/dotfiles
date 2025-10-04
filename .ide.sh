@@ -1,15 +1,15 @@
 #!/bin/bash
 
-diretorio="Projetos/ReactJS/"
-viteconfig="import { defineConfig } from 'vite';
+DIRETORIO="Projetos/ReactJS/"
+VITECONFIG="import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({ plugins: [ tailwindcss(), ], })"
-indexcss='@import "tailwindcss";'
+INDEXCSS='@import "tailwindcss";'
 
-if [ ! -d "$diretorio" ]; then
-  mkdir -p "$diretorio"
+if [ ! -d "$DIRETORIO" ]; then
+  mkdir -p "$DIRETORIO"
 fi
-cd "$diretorio"
+cd "$DIRETORIO"
 
 read -p "Nome do projeto: " projeto
 if [ -z "$projeto" ]; then
@@ -22,8 +22,8 @@ if [ -d $projeto ]; then
 	tmux
 else
   mkdir $projeto; cd ./$projeto; npm create vite@latest ./; npm install; npm install tailwindcss @tailwindcss/vite
-		echo "$viteconfig" > vite.config.js
-		cd src; echo "$indexcss" > index.css
+		echo "$VITECONFIG" > vite.config.js
+		cd src; echo "$INDEXCSS" > index.css
 		cd ../
 		tmux
 fi
